@@ -108,7 +108,7 @@ motion:
 > Category: Personal belongings and location management
 > Surface: Korean Android and iPhone mobile app
 
-Nestory는 집 안의 물건을 기록하고 현재 보관 위치를 찾는 한국어 모바일 앱이다. 공간 → 보관함 → 물건 구조로 등록·찾기·이동을 돕는다. 사진은 선택적인 단서이며 이름과 전체 위치 경로가 핵심 정보다. 2026년 10월 7일 디자인을 확정했으며 기존 [Nestory Figma](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=0-1)의 Noto Sans KR·텍스트 크기·줄 높이를 따른다. Flutter 공통 토큰·폰트·테마는 구현했고 공통 컴포넌트와 제품 화면은 후속 작업이다.
+Nestory는 집 안의 물건을 기록하고 현재 보관 위치를 찾는 한국어 모바일 앱이다. 공간 → 보관함 → 물건 구조로 등록·찾기·이동을 돕는다. 사진은 선택적인 단서이며 이름과 전체 위치 경로가 핵심 정보다. 2026년 10월 7일 디자인을 확정했으며 기존 [Nestory Figma](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=0-1)의 Noto Sans KR·텍스트 크기·줄 높이를 따른다. Flutter 공통 토큰·폰트·테마와 버튼·레이블 입력·상태 안내·사진 자리표시는 구현했고 제품 화면은 후속 작업이다.
 
 ## Visual Theme & Atmosphere
 

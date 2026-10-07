@@ -7,7 +7,7 @@
 - 현재 구현은 Figma 공통 테마를 적용한 임시 카운터 앱이다. 시작점은 `lib/main.dart`와 `app/nestory_bootstrap.dart`, 기존 카운터 테스트는 `test/widget_test.dart`다.
 - 확인한 환경은 Flutter 3.47.5 stable, Dart 3.13.4다. `pubspec.yaml`의 Dart SDK 제약은 `^3.13.4`다.
 - 현재 의존성은 Flutter와 `cupertino_icons`, 개발 의존성은 `flutter_test`와 `flutter_lints`다. 분석 규칙은 `analysis_options.yaml`을 따른다.
-- Firebase, Riverpod, go_router는 기획상 도입 방향이며 아직 설치하거나 구성하지 않았다. 기능별 구조와 책임 분리는 합의했고 `core/design`의 공통 토큰·폰트·테마를 구현했다. 공통 입력·상태 컴포넌트와 기능별 디렉터리는 후속 구현 단계다.
+- Firebase, Riverpod, go_router는 기획상 도입 방향이며 아직 설치하거나 구성하지 않았다. 기능별 구조와 책임 분리는 합의했고 `core/design`의 공통 토큰·폰트·테마와 `core/widgets`의 공통 버튼·레이블 입력·상태 안내·사진 자리표시를 구현했다. 기능별 디렉터리와 제품 화면은 후속 구현 단계다.
 - Android 10 이상과 iPhone이 MVP 정식 지원 대상이다. Web, macOS, Windows, Linux 디렉터리는 생성된 템플릿이며 제품 지원을 의미하지 않는다. iPad는 정식 지원 대상에서 제외한다.
 - iOS의 현재 deployment target은 15.0이며 기획상 최소 지원 기준은 18.0, 검증 목표는 27.0까지다. 플랫폼 설정 변경은 별도 Issue에서 한다.
 - 한국 사용자 중심으로 Firebase 개발·운영 프로젝트를 분리하고 양쪽 Firestore·Storage를 서울 리전에 구성한다. 개발·운영 합산 월 1만 원은 비용 알림 기준이다. 현재 실제 Firebase 설정은 없다.

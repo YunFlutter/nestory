@@ -1,6 +1,6 @@
 # Nestory 디자인 시스템
 
-2026년 10월 7일 사용자가 확정한 한국어 Android·iPhone 앱의 디자인 기준이다. 기존 [Nestory Figma](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=0-1)의 서체·크기·줄 높이를 반영한다. Flutter 앱의 공통 테마·컴포넌트 구현은 후속 작업이다. [Issue 3](https://github.com/YunFlutter/nestory/issues/3)에서 진행하며 [MVP 기획](PRODUCT_PLAN.md)의 정책을 따른다.
+2026년 10월 7일 사용자가 확정한 한국어 Android·iPhone 앱의 디자인 기준이다. 기존 [Nestory Figma](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=0-1)의 서체·크기·줄 높이를 반영한다. Flutter 앱의 공통 토큰·폰트·테마와 [공통 컴포넌트](COMMON_COMPONENTS.md)를 구현했다. 제품 화면 적용은 후속 작업이다. [Issue 3](https://github.com/YunFlutter/nestory/issues/3)에서 진행하며 [MVP 기획](PRODUCT_PLAN.md)의 정책을 따른다.
 
 ## 디자인 방향
 
@@ -81,7 +81,7 @@
 
 ## 한글 타이포그래피
 
-서체는 **Noto Sans KR**이다. 사용자가 기존 Figma 화면의 서체·크기를 기준으로 선택했고, 아래 줄 높이는 Figma 스타일 패널에서도 확인했다. `Nestory Studio/` 전달용 스타일과 제품용 `Nestory/` 스타일을 구분한다. [공통 기반 PR 7](https://github.com/YunFlutter/nestory/pull/7)에서 [폰트 원본·라이선스·번들](../assets/fonts/README.md)과 [Flutter 토큰](../lib/core/design/nestory_typography.dart)을 추가한다. Android·iPhone 실기기 표시는 [구현 Issue 5](https://github.com/YunFlutter/nestory/issues/5)에 남긴다.
+서체는 **Noto Sans KR**이다. 사용자가 기존 Figma 화면의 서체·크기를 기준으로 선택했고, 아래 줄 높이는 Figma 스타일 패널에서도 확인했다. `Nestory Studio/` 전달용 스타일과 제품용 `Nestory/` 스타일을 구분한다. [공통 기반 PR 7](https://github.com/YunFlutter/nestory/pull/7)에서 [폰트 원본·라이선스·번들](../assets/fonts/README.md)과 [Flutter 토큰](../lib/core/design/nestory_typography.dart)을 추가했다. Android·iPhone 실기기 표시는 미검증이며 사용자 요청으로 [구현 Issue 5](https://github.com/YunFlutter/nestory/issues/5) 종료 조건에서 제외한다.
 
 | 역할 | Figma 스타일 | 크기 / 줄 높이 | 굵기 | 용도 |
 | --- | --- | --- | --- | --- |
