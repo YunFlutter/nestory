@@ -1,7 +1,7 @@
 ---
 name: Nestory
-version: "0.1"
-status: proposal
+version: "0.2"
+status: approved
 category: Personal belongings and location management
 surface: Korean Android and iPhone mobile app
 colors:
@@ -33,39 +33,49 @@ colors:
   tertiary: "#C84B31"
 typography:
   display:
-    fontFamily: Pretendard
-    fontSize: "32px"
-    lineHeight: "42px"
+    fontFamily: Noto Sans KR
+    fontSize: "28px"
+    lineHeight: "38px"
     fontWeight: 700
   h1:
-    fontFamily: Pretendard
-    fontSize: "24px"
-    lineHeight: "34px"
+    fontFamily: Noto Sans KR
+    fontSize: "22px"
+    lineHeight: "32px"
     fontWeight: 700
   h2:
-    fontFamily: Pretendard
-    fontSize: "20px"
-    lineHeight: "28px"
-    fontWeight: 600
+    fontFamily: Noto Sans KR
+    fontSize: "18px"
+    lineHeight: "27px"
+    fontWeight: 700
   body:
-    fontFamily: Pretendard
+    fontFamily: Noto Sans KR
     fontSize: "16px"
-    lineHeight: "24px"
+    lineHeight: "25px"
     fontWeight: 400
-  label:
-    fontFamily: Pretendard
+  strong:
+    fontFamily: Noto Sans KR
     fontSize: "16px"
-    lineHeight: "24px"
-    fontWeight: 600
+    lineHeight: "25px"
+    fontWeight: 700
   bodySmall:
-    fontFamily: Pretendard
+    fontFamily: Noto Sans KR
     fontSize: "14px"
     lineHeight: "22px"
     fontWeight: 400
   caption:
-    fontFamily: Pretendard
+    fontFamily: Noto Sans KR
     fontSize: "12px"
     lineHeight: "18px"
+    fontWeight: 400
+  label:
+    fontFamily: Noto Sans KR
+    fontSize: "14px"
+    lineHeight: "21px"
+    fontWeight: 700
+  micro:
+    fontFamily: Noto Sans KR
+    fontSize: "11px"
+    lineHeight: "16px"
     fontWeight: 500
 spacing:
   xs: 4
@@ -98,13 +108,13 @@ motion:
 > Category: Personal belongings and location management
 > Surface: Korean Android and iPhone mobile app
 
-Nestory는 집 안의 물건을 기록하고 현재 보관 위치를 찾는 한국어 모바일 앱이다. 공간 → 보관함 → 물건 구조로 등록·찾기·이동을 돕는다. 사진은 선택적인 단서이며 이름과 전체 위치 경로가 핵심 정보다. 이 파일은 OpenDesign 입력용 디자인 제안이며 앱에 구현되거나 최종 승인된 시스템을 의미하지 않는다.
+Nestory는 집 안의 물건을 기록하고 현재 보관 위치를 찾는 한국어 모바일 앱이다. 공간 → 보관함 → 물건 구조로 등록·찾기·이동을 돕는다. 사진은 선택적인 단서이며 이름과 전체 위치 경로가 핵심 정보다. 2026년 10월 7일 디자인을 확정했으며 기존 [Nestory Figma](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=0-1)의 Noto Sans KR·텍스트 크기·줄 높이를 따른다. Flutter 앱의 구현은 후속 작업이다.
 
 ## Visual Theme & Atmosphere
 
 순백색 바탕, 밝은 무채색 회색 구분, 읽기 쉬운 진한 회색 한글, 코랄 오렌지 주요 버튼, 명확한 버튼 위계로 구성한다. 국내 생활 서비스의 일상적인 사용 흐름을 참고하되 특정 앱의 로고나 브랜드 색을 복제하지 않는다. 장식보다 물건 사진과 현재 위치가 먼저 보이게 한다. 기업 수준의 완성도는 정렬·간격·정보 위계·예외 상태의 일관성으로 표현한다.
 
-페이지·카드·시트·팝업·상태 안내의 기본 바탕은 반드시 #FFFFFF다. 웜화이트·크림·베이지의 넓은 면을 만들지 않는다. 색은 화면마다 새로 고르지 말고 아래 토큰을 공유한다. 라이트 모드 제안이며 다크 모드, Material/Cupertino 기반과 새 패키지는 확정하지 않는다.
+페이지·카드·시트·팝업·상태 안내의 기본 바탕은 반드시 #FFFFFF다. 웜화이트·크림·베이지의 넓은 면을 만들지 않는다. 색은 화면마다 새로 고르지 말고 아래 토큰을 공유한다. 라이트 모드 기준이며 다크 모드, Material/Cupertino 기반과 새 패키지는 확정하지 않는다.
 
 ## Color Palette & Roles
 
@@ -140,20 +150,22 @@ Nestory는 집 안의 물건을 기록하고 현재 보관 위치를 찾는 한�
 
 ## Typography
 
-- **Display font:** Pretendard — weights: 600, 700; fallbacks: system-ui, sans-serif
-- **Body font:** Pretendard — weights: 400, 500, 600; fallbacks: system-ui, sans-serif
+- **Display font:** Noto Sans KR — weights: 700; fallbacks: system-ui, sans-serif
+- **Body font:** Noto Sans KR — weights: 400, 500, 700; fallbacks: system-ui, sans-serif
 
-| Role | Size / line height | Weight | Use |
-| --- | --- | --- | --- |
-| display | 32 / 42 | 700 | 소개·큰 빈 상태에 제한 |
-| h1 | 24 / 34 | 700 | 화면 제목·물건 이름 |
-| h2 | 20 / 28 | 600 | 보관함·물건 섹션 |
-| body | 16 / 24 | 400 | 입력값·메모·본문 |
-| label | 16 / 24 | 600 | 버튼·주요 행 이름 |
-| bodySmall | 14 / 22 | 400 | 경로·필드 안내 |
-| caption | 12 / 18 | 500 | 부가 정보만, 핵심 경로·오류에 금지 |
+| Role | Figma style | Size / line height | Weight | Use |
+| --- | --- | --- | --- | --- |
+| display | Nestory/Display | 28 / 38 | 700 | 소개·큰 빈 상태 제목 |
+| h1 | Nestory/Title | 22 / 32 | 700 | 화면 제목·물건 이름 |
+| h2 | Nestory/Section | 18 / 27 | 700 | 보관함·물건 섹션 |
+| body | Nestory/Body | 16 / 25 | 400 | 입력값·메모·본문 |
+| strong | Nestory/Strong | 16 / 25 | 700 | 주요 행동·강조 행 이름 |
+| bodySmall | Nestory/Small | 14 / 22 | 400 | 경로·필드 안내 |
+| caption | Nestory/Caption | 12 / 18 | 400 | 부가 정보만, 핵심 경로·오류에 사용 금지 |
+| label | Nestory/Label | 14 / 21 | 700 | 짧은 레이블 |
+| micro | Nestory/Micro | 11 / 16 | 500 | 제한적인 보조 표기 |
 
-모바일 논리 픽셀 기준의 출발값이며 미리보기에서는 같은 수치를 CSS px로 표현할 수 있다. 자간 기본 0. 한글을 임의 대문자처럼 꾸미거나 장식용 영문 서체·세리프를 섞지 않는다. 필수 텍스트에 고정 높이나 축소 글자를 적용하지 않는다. Pretendard는 서체 후보이며 실제 폰트 파일·라이선스·플랫폼 표시는 도입 때 확인한다.
+크기와 줄 높이는 기존 Figma 스타일의 확인값이다. 모바일 논리 픽셀에 대응하며 미리보기에서는 CSS px로 표현할 수 있다. 한글을 임의 대문자처럼 꾸미거나 장식용 영문·세리프 서체를 섞지 않는다. Caption·Micro는 보조 정보에 제한하고 필수 텍스트에 고정 높이·축소 글자를 적용하지 않는다. 자간은 기존 스타일을 확인한 뒤 적용한다. 폰트 파일·라이선스·실제 플랫폼 표시는 앱 구현에서 검증한다.
 
 ## Layout Principles
 
@@ -239,4 +251,4 @@ Android·iPhone 모바일 화면용이며 데스크톱 웹·iPad 화면을 생�
 
 그린 계열, 블루·보라의 테크 브랜드 조합, 크림·베이지 배경, 파스텔 카드, 그라데이션, 광택 3D 소품, 모든 요소의 pill화, 장식용 영문 제목을 추가하지 않는다. 가족 공유·AI 인식·QR·가격·수량·대시보드·알림·복구·소셜 로그인 등 MVP 밖 기능을 추가하지 않는다. 화면은 제품 설계 검토용이며 실제 데이터·업로드·로그인 구현을 주장하지 않는다.
 
-정책 원본은 [MVP 기획](docs/PRODUCT_PLAN.md), 색·수치 및 출처 원본은 [디자인 시스템](docs/DESIGN_SYSTEM.md), 연구는 [화면별 디자인 연구](docs/DESIGN_RESEARCH.md)다. 작업은 [Issue 3](https://github.com/YunFlutter/nestory/issues/3)과 연결한다. 이미지보다 문서의 토큰을 우선한다.
+정책 원본은 [MVP 기획](docs/PRODUCT_PLAN.md), 색·수치 및 출처 원본은 [디자인 시스템](docs/DESIGN_SYSTEM.md), Figma 연결은 [Figma 디자인 시스템](docs/design/FIGMA_DESIGN_SYSTEM.md), 연구는 [화면별 디자인 연구](docs/DESIGN_RESEARCH.md)다. 작업은 [Issue 3](https://github.com/YunFlutter/nestory/issues/3)과 연결한다. 이미지보다 문서의 토큰을 우선한다.

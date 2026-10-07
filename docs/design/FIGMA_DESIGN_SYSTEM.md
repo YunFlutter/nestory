@@ -10,50 +10,63 @@
 | [02 · 상태와 다이얼로그](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=4-2) | 진행·실패·충돌·확인 패턴 |
 | [03 · 컴포넌트](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=4-3) | 공통 컴포넌트와 디자인 시스템 안내 |
 
-기존 페이지와 화면을 보존한다. 새 파일·중복 컬렉션을 만들기 전에 기존 자산을 확인한다. 구조 변경에는 기존 인스턴스·변수·텍스트 스타일 연결을 유지하며 변경한 값의 영향을 확인한다.
+기존 3개 페이지와 컴포넌트 ID를 유지했다. `03 · 컴포넌트`에 [00 · Nestory 디자인 시스템 안내](https://www.figma.com/design/0TBem9Jmlvqyh9QOmEBAs6/Nestory?node-id=51-608)를 추가했다. 새 파일이나 중복 컬렉션을 만들지 않고 기존 변수·텍스트 스타일을 재사용했다.
 
 ## 한글 텍스트 스타일
 
-서체는 **Noto Sans KR**이다. 다음 이름·크기·굵기는 기존 Figma의 로컬 텍스트 스타일에서 확인했다. `Nestory Studio/`의 별도 전달용 스타일과 제품 UI 스타일을 섞지 않는다.
+서체는 **Noto Sans KR**이다. 다음 이름·크기·굵기는 기존 Figma의 로컬 텍스트 스타일에서, 줄 높이는 브라우저의 스타일 패널에서 확인했다. `Nestory Studio/`의 별도 전달용 스타일과 제품 UI 스타일을 섞지 않는다.
 
-| Figma 스타일 | 문서 역할 | 크기 | 굵기 | 사용 |
+| Figma 스타일 | 문서 역할 | 크기 / 줄 높이 | 굵기 | 사용 |
 | --- | --- | --- | --- | --- |
-| `Nestory/Display` | display | 28 | 700 · Bold | 소개·큰 빈 상태 제목 |
-| `Nestory/Title` | title | 22 | 700 · Bold | 화면 제목·물건 이름 |
-| `Nestory/Section` | section | 18 | 700 · Bold | 보관함·물건 섹션 |
-| `Nestory/Body` | body | 16 | 400 · Regular | 입력값·메모·본문 |
-| `Nestory/Strong` | strong | 16 | 700 · Bold | 주요 행동·강조 행 이름 |
-| `Nestory/Small` | bodySmall | 14 | 400 · Regular | 경로·필드 안내 |
-| `Nestory/Caption` | caption | 12 | 400 · Regular | 부가 정보 |
-| `Nestory/Label` | label | 14 | 700 · Bold | 짧은 레이블 |
-| `Nestory/Micro` | micro | 11 | 500 · Medium | 제한적인 보조 표기 |
+| `Nestory/Display` | display | 28 / 38 | 700 · Bold | 소개·큰 빈 상태 제목 |
+| `Nestory/Title` | title | 22 / 32 | 700 · Bold | 화면 제목·물건 이름 |
+| `Nestory/Section` | section | 18 / 27 | 700 · Bold | 보관함·물건 섹션 |
+| `Nestory/Body` | body | 16 / 25 | 400 · Regular | 입력값·메모·본문 |
+| `Nestory/Strong` | strong | 16 / 25 | 700 · Bold | 주요 행동·강조 행 이름 |
+| `Nestory/Small` | bodySmall | 14 / 22 | 400 · Regular | 경로·필드 안내 |
+| `Nestory/Caption` | caption | 12 / 18 | 400 · Regular | 부가 정보 |
+| `Nestory/Label` | label | 14 / 21 | 700 · Bold | 짧은 레이블 |
+| `Nestory/Micro` | micro | 11 / 16 | 500 · Medium | 제한적인 보조 표기 |
 
-크기는 Flutter 논리 픽셀에 대응한다. Caption·Micro를 핵심 경로·오류·입력값·주요 행동에 사용하지 않는다. 긴 경로와 글자 확대에는 줄바꿈·필요한 높이를 제공한다. Figma의 줄 높이·자간은 추가 확인 항목이며 위 크기·굵기만으로 기존 값을 추정하지 않는다. 앱 번들에 넣을 폰트 파일·라이선스 고지와 실제 Android·iPhone 표시는 구현 Issue에서 검증한다.
+크기는 Flutter 논리 픽셀에 대응한다. Caption·Micro를 핵심 경로·오류·입력값·주요 행동에 사용하지 않는다. 긴 경로와 글자 확대에는 줄바꿈·필요한 높이를 제공한다. 자간은 추가 확인 항목이며 크기·줄 높이·굵기만으로 추정하지 않는다. 앱 번들에 넣을 폰트 파일·라이선스 고지와 실제 Android·iPhone 표시는 구현 Issue에서 검증한다.
 
 ## 변수 컬렉션과 색 역할
 
-기존 파일에는 `Nestory / Primitives` 52개, `Nestory / Semantic` 58개, `Nestory Studio/Primitives` 15개, `Nestory Studio/Semantic` 7개 변수가 있다. 각각 Value·Light·Base·Light 모드를 사용한다. 제품 UI는 기존 `Nestory /` 컬렉션을 우선 재사용한다.
+최초 읽기 시 파일에는 변수가 총 132개 있었다. 브라우저에서 기존 컬렉션에 primitive 4개와 semantic alias 26개를 추가해 현재 총 162개다. 제품 UI는 기존 `Nestory /` 컬렉션을 사용한다.
+
+| 컬렉션 | 모드 | 최초 / 반영 후 개수 |
+| --- | --- | --- |
+| `Nestory / Primitives` | Value | 52 / 56 |
+| `Nestory / Semantic` | Light | 58 / 84 |
+| `Nestory Studio/Primitives` | Base | 15 / 15 |
+| `Nestory Studio/Semantic` | Light | 7 / 7 |
 
 [디자인 시스템](../DESIGN_SYSTEM.md)의 25개 색 역할을 모두 보존한다. 같은 raw 색은 primitive로 관리하고 semantic 역할에서 alias로 연결한다. `tertiary`는 별도 브랜드색을 추가하지 않는 `accent` 별칭이다. Figma 이름은 slash 그룹을 사용하고 문서·Flutter 역할과의 대응을 변수 설명에 남긴다.
 
-| 확인된 Figma 변수 | 값 | 대응과 처리 |
+| Primitive | 현재 값 | 연결한 Semantic 역할 (`role/` 그룹) |
 | --- | --- | --- |
 | `color/bg` | #FFFFFF | background |
-| `color/surface` | #F5F5F5 | surfaceSubtle에 대응. 문서의 흰색 surface와 구분 |
+| `color/surface` | #F5F5F5 | surfaceSubtle |
 | `color/fg` | #292724 | textPrimary |
 | `color/muted` | #626262 | textSecondary |
 | `color/border` | #888888 | outline |
-| `color/accent` | #C84B31 | primary·accent·focus |
-| `color/white` | #FFFFFF | onPrimary·onAccent·흰색 surface |
-| `color/pressed` | #AD412A | 확정 primaryPressed #A83D27과 차이 있음 |
-| `color/divider` | #E6E3E1 | 확정 divider #E9E9E9와 차이 있음 |
-| `color/accent-soft` | #FBEFEB | 확정 선택 바탕 #F4F4F4와 차이 있음 |
-| `color/disabled` | #DEDBD9 | 확정 disabledContainer #EEEEEE와 차이 있음 |
-| `color/success` | #326C51 | 기존 값은 그린. 확정 success는 #A83D27 |
+| `color/accent` | #C84B31 | primary·accent·focus·tertiary |
+| `color/white` | #FFFFFF | surface·onPrimary·onAccent·successContainer·warningContainer·errorContainer·infoContainer |
+| `color/pressed` | #A83D27 | primaryPressed·onPrimaryContainer |
+| `color/divider` | #E9E9E9 | divider |
+| `color/accent-soft` | #F4F4F4 | primaryContainer |
+| `color/disabled` | #EEEEEE | disabledContainer |
+| `color/success` | #A83D27 | success |
+| `color/on-disabled` | #777777 | onDisabled |
+| `color/warning` | #765414 | warning |
+| `color/error` | #A23C34 | error |
+| `color/info` | #565D65 | info |
 
-확인된 차이를 현재 정책으로 승인한 것으로 해석하지 않는다. 변경 전에 사용처를 확인하고 필요한 역할을 정확히 구분한다. `color/surface`를 일괄 흰색으로 바꾸면 사진 없음·보조 입력 영역도 바뀔 수 있으므로 기존 ID의 의미를 보존하고 흰색 surface 역할을 별도로 연결한다. 위에 없는 색·간격·형태 변수는 미확인이다.
+확정 정책과 달랐던 `color/pressed` #AD412A, `color/divider` #E6E3E1, `color/accent-soft` #FBEFEB, `color/disabled` #DEDBD9, `color/success` #326C51을 위 현재 값으로 수정했다. 기존 변수 ID와 legacy alias는 유지했으므로 해당 변수를 사용하는 기존 화면·컴포넌트에도 새 값이 적용된다. `color/surface`는 보조 회색의 의미를 유지하고 흰색 `role/surface`를 별도로 연결했다. 기존 수치 변수와 Studio 컬렉션은 수정하지 않았다.
 
-변수에는 적용 속성에 맞는 scope를 지정한다. 색은 배경·텍스트·경계 용도, 간격은 gap·padding, radius는 corner radius로 제한한다. primitive는 picker에 불필요하게 노출하지 않는다. 코드 문법은 실제 구현 이름에 맞춰 기록하며 아직 존재하지 않는 Flutter 클래스나 Code Connect 연결을 구현 완료로 표시하지 않는다.
+추가한 primitive 4개는 게시 숨김과 빈 scope를 적용했다. `role/`의 26개 alias에는 배경의 Frame·Shape, 본문의 Text·Shape, 경계의 Stroke 등 용도별 scope와 설명을 설정했다. 각 alias의 primitive 참조와 최종 hex를 브라우저에서 대조했다.
+
+26개 alias의 Web code syntax는 `var(--nestory-역할의-kebab-case)`, Android·iOS는 Flutter 대응 이름 `NestoryColors.역할명`이다. 예를 들어 `role/textPrimary`는 `var(--nestory-text-primary)`와 `NestoryColors.textPrimary`다. 새 primitive의 Web syntax는 `var(--nestory-primitive-이름)`, Android·iOS는 `const Color(0xFFHEX)`다. 세 플랫폼 필드의 저장을 확인했으며 이 이름은 구현 계약이다. Flutter 클래스와 Code Connect 연결을 구현했다는 뜻은 아니다.
 
 ## 간격과 형태 기준
 
@@ -106,4 +119,11 @@
 
 ## 확인 범위
 
-2026년 10월 7일 Figma 도구로 페이지 3개, 변수 총 132개, 텍스트 스타일 14개 및 제품용 `Nestory/` 스타일 9개를 읽었다. 첫 화면 페이지에서는 Component 6개, Component Set 0개를 확인했다. 다른 페이지의 전체 컴포넌트·줄 높이·자간·모든 변수와 바인딩은 추가 확인 대상이다. 이 읽기 결과만으로 시스템 구축 완료를 선언하지 않는다.
+2026년 10월 7일 Figma 도구로 초기 구조를 읽고, 로그인된 Chrome의 브라우저 조작으로 위 변경을 저장했다. 컴포넌트 페이지의 기존 Button 세트와 아이콘·입력·행·상태 안내를 확인했고 제품용 9개 스타일의 줄 높이도 확인했다.
+
+- 추가한 primitive 4개와 semantic alias 26개의 값·참조·scope·설명·세 플랫폼 code syntax를 확인했다. 최종 컬렉션 개수는 56·84·15·7이다.
+- 안내 프레임 `51:608`은 세로 Auto Layout, 폭 960, 높이 Hug 1867, gap 24, padding 40이다. 안내용 배치 수치는 고정값이며 제품의 수치 변수 바인딩 완료를 의미하지 않는다.
+- 안내 제목과 본문은 기존 `Nestory/Display`·`Nestory/Body` 스타일과 `role/textPrimary`, 바탕은 `role/surface`에 연결했다. 본문은 자동 높이이며 전체 안내가 잘림·겹침 없이 표시되는지 캡처로 확인했다.
+- 13종의 역할·상태·속성을 문서와 안내 프레임에 기록했다. 기존 모든 컴포넌트의 Variant·자간·바인딩 및 360·390·430 화면 적용 검증은 완료 범위에 포함하지 않는다.
+
+문서의 토큰·YAML·내부 링크·대비 계산·diff를 검증했다. Flutter 구현·실기기 접근성은 [Issue 5](https://github.com/YunFlutter/nestory/issues/5)의 후속 검증이다.
