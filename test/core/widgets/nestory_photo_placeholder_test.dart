@@ -9,8 +9,6 @@ void main() {
     testWidgets(
       '$kind explains the missing photo visibly and to assistive technology',
       (tester) async {
-        final handle = tester.ensureSemantics();
-        addTearDown(handle.dispose);
         await tester.pumpWidget(
           MaterialApp(
             theme: NestoryTheme.light,

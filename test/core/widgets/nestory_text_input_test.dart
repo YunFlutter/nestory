@@ -68,8 +68,6 @@ void main() {
   testWidgets(
     'external error is linked to input and clears without losing text',
     (tester) async {
-      final handle = tester.ensureSemantics();
-      addTearDown(handle.dispose);
       final controller = TextEditingController(text: '길이가 긴 이름');
       addTearDown(controller.dispose);
       Future<void> render(String? error) => show(
@@ -83,17 +81,67 @@ void main() {
         ),
       );
       await render('이름을 다시 확인해 주세요');
-      expect(find.text('이름을 다시 확인해 주세요'), findsOneWidget);
+      expect(find.text('오류: 이름을 다시 확인해 주세요'), findsOneWidget);
       final editable = tester.getSemantics(find.byType(EditableText));
       expect(editable.label, contains('이름'));
       expect(editable.hint, contains('이름을 다시 확인해 주세요'));
       expect(editable.hint, contains('9 / 50자'));
       await render(null);
-      expect(find.text('이름을 다시 확인해 주세요'), findsNothing);
+      expect(find.text('오류: 이름을 다시 확인해 주세요'), findsNothing);
       expect(find.text('공간을 구별할 이름을 적어 주세요'), findsOneWidget);
       expect(controller.text, '길이가 긴 이름');
     },
   );
+
+  testWidgets(
+    'focused input closes keyboard on external loading and can resume editing',
+    (tester) async {
+      final controller = TextEditingController(text: '유지할 값');
+      addTearDown(controller.dispose);
+      Future<void> render(bool loading) => show(
+        tester,
+        NestoryTextInput(
+          label: '이름',
+          controller: controller,
+          isLoading: loading,
+        ),
+      );
+      await render(false);
+      await tester.tap(find.byType(TextField));
+      await tester.pump();
+      expect(tester.testTextInput.isVisible, true);
+      await render(true);
+      await tester.pump();
+      expect(tester.testTextInput.isVisible, false);
+      expect(controller.text, '유지할 값');
+      await render(false);
+      await tester.enterText(find.byType(TextField), '이어서 작성');
+      expect(controller.text, '이어서 작성');
+    },
+  );
+
+  testWidgets('read-only input keeps its value without opening keyboard', (
+    tester,
+  ) async {
+    final controller = TextEditingController(text: '읽기 전용 값');
+    addTearDown(controller.dispose);
+    await show(
+      tester,
+      NestoryTextInput(label: '현재 위치', controller: controller, readOnly: true),
+    );
+    await tester.tap(find.byType(TextField));
+    await tester.pump();
+    expect(tester.testTextInput.isVisible, false);
+    expect(controller.text, '읽기 전용 값');
+    expect(
+      tester
+          .getSemantics(find.byType(EditableText))
+          .getSemanticsData()
+          .flagsCollection
+          .isReadOnly,
+      true,
+    );
+  });
 
   testWidgets('memo and submission options stay under caller control', (
     tester,

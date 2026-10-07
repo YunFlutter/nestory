@@ -15,8 +15,6 @@ void main() {
     testWidgets(
       '$kind includes a visible meaning, message and optional action',
       (tester) async {
-        final handle = tester.ensureSemantics();
-        addTearDown(handle.dispose);
         var calls = 0;
         await show(
           tester,

@@ -28,7 +28,7 @@
 | `Nestory/Label` | label | 14 / 21 | 700 · Bold | 짧은 레이블 |
 | `Nestory/Micro` | micro | 11 / 16 | 500 · Medium | 제한적인 보조 표기 |
 
-크기는 Flutter 논리 픽셀에 대응한다. Caption·Micro를 핵심 경로·오류·입력값·주요 행동에 사용하지 않는다. 긴 경로와 글자 확대에는 줄바꿈·필요한 높이를 제공한다. 2026년 10월 7일 구현 작업에서 제품용 9개 스타일의 자간도 모두 0px으로 확인했다. [Flutter 타이포그래피](../../lib/core/design/nestory_typography.dart)는 크기·줄 높이·굵기·자간을 그대로 연결한다. [폰트 원본·라이선스·번들](../../assets/fonts/README.md)을 추가했으며 실기기 검증은 Issue 5에 남긴다.
+크기는 Flutter 논리 픽셀에 대응한다. Caption·Micro를 핵심 경로·오류·입력값·주요 행동에 사용하지 않는다. 긴 경로와 글자 확대에는 줄바꿈·필요한 높이를 제공한다. 2026년 10월 7일 구현 작업에서 제품용 9개 스타일의 자간도 모두 0px으로 확인했다. [Flutter 타이포그래피](../../lib/core/design/nestory_typography.dart)는 크기·줄 높이·굵기·자간을 그대로 연결한다. [폰트 원본·라이선스·번들](../../assets/fonts/README.md)을 추가했으며 실기기 검증은 미수행이다. 사용자 요청으로 Issue 5 종료 조건에서 제외한다.
 
 ## 변수 컬렉션과 색 역할
 

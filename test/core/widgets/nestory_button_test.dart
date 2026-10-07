@@ -30,8 +30,6 @@ void main() {
       testWidgets(
         '$variant blocks ${loading ? 'loading' : 'disabled'} actions',
         (tester) async {
-          final handle = tester.ensureSemantics();
-          addTearDown(handle.dispose);
           var calls = 0;
           await show(
             tester,
