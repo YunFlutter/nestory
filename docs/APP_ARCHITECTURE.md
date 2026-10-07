@@ -4,40 +4,46 @@
 
 ## 현재 단계와 구현 순서
 
-현재 앱은 Flutter 카운터 템플릿이며 진입점·루트·임시 화면을 다음 세 파일로 분리했다. 카운터 표시와 증가 동작, 기존 템플릿 테마를 유지한다. 공통 디자인 토큰과 위젯은 다음 구현 단계다. 실제 기능 폴더는 해당 기능의 첫 코드와 함께 만든다.
+현재 앱은 진입점·시작 처리·루트·임시 화면을 분리하고 Figma 공통 토큰·폰트·테마를 연결했다. 카운터 표시와 증가 동작을 유지하며 한글 안내로 폰트를 확인할 수 있다. 공통 버튼·입력·상태 안내·사진 자리표시는 다음 단계이며, 실제 기능 폴더는 해당 기능의 첫 코드와 함께 만든다.
 
 | 현재 파일 | 책임 |
 | --- | --- |
-| [lib/main.dart](../lib/main.dart) | `runApp`으로 `NestoryApp` 실행 |
-| [lib/app/nestory_app.dart](../lib/app/nestory_app.dart) | `NestoryApp`, 현재 MaterialApp·임시 테마·시작 화면 조립 |
-| [lib/app/demo/counter_page.dart](../lib/app/demo/counter_page.dart) | `CounterPage`와 전용 State, 기존 카운터 화면 |
+| [lib/main.dart](../lib/main.dart) | `NestoryBootstrap`에 시작 위임 |
+| [lib/app/nestory_bootstrap.dart](../lib/app/nestory_bootstrap.dart) | Flutter 초기화·폰트 라이선스 등록·`runApp` |
+| [lib/app/nestory_app.dart](../lib/app/nestory_app.dart) | `NestoryApp`, MaterialApp·공통 라이트 테마·시작 화면 조립 |
+| [lib/app/demo/counter_page.dart](../lib/app/demo/counter_page.dart) | `CounterPage`와 전용 State, 임시 카운터·한글 안내·글자 확대 |
+| `lib/core/design/` | 승인 색·서체·간격·크기·radius, 폰트 자산 경로와 라이선스 등록, 테마 어댑터 |
 
-카운터의 Widget 내 로컬 상태는 임시 템플릿용이다. 제품 기능의 액션·제품 규칙은 아래 application·domain 계층으로 분리한다. 기존 템플릿 테마를 승인된 공통 디자인 적용 완료로 표시하지 않는다.
+카운터의 Widget 내 로컬 상태는 임시 템플릿용이다. 제품 기능의 액션·제품 규칙은 아래 application·domain 계층으로 분리한다. 토큰·폰트·테마 구현과 공통 Widget·제품 화면 완성을 구분한다.
 
 | 단계 | 범위 | 확인 기준 |
 | --- | --- | --- |
 | 앱 구조 | 진입점·앱 조립·임시 카운터 화면 분리, 계층과 파일 배치 정의 | 카운터의 기존 동작 유지, 하위 계층이 진입점을 import하지 않음 |
-| 공통 디자인 | 색·서체·간격·형태와 버튼·입력·상태 안내·사진 자리표시 | 승인 토큰 일치, 상태·접근성·폰트 번들·양쪽 플랫폼 검증 |
+| 공통 디자인 기반 | 색·서체·간격·크기·형태·폰트·테마 구현 | 승인 원본과 일치, 라이선스·번들·한글·글자 확대 검증 |
+| 공통 컴포넌트 | 버튼·입력·상태 안내·사진 자리표시, 후속 단계 | 상태·의미 레이블·실기기 접근성·양쪽 플랫폼 검증 |
 | 기능 구현 | 위치·물건·검색·임시 저장·계정 | 기능별 Issue의 제품 동작·저장·권한·예외 검증 |
 
 Firebase·Riverpod·go_router는 기획의 도입 방향이다. 이 구조 정의만으로 설치하거나 구성하지 않는다. 현재 Material 템플릿과 제품의 최종 UI 기반 선택도 구분한다.
 
 ## 디렉터리 배치
 
-다음은 현재 세 파일과 후속 구현의 계획을 합친 배치다. `core/`와 `features/`의 디렉터리·파일은 아직 생성하지 않았으며 필요한 동작을 구현하는 단계에서 추가한다.
+다음은 현재 `app/`·`core/design/`과 후속 구현의 계획을 합친 배치다. `core/widgets/`·`core/errors/`·`features/`는 필요한 동작을 구현하는 단계에서 추가한다.
 
 ```text
 lib/
   main.dart                         앱 실행
   app/
+    nestory_bootstrap.dart           초기화와 폰트 라이선스 등록
     nestory_app.dart                 루트 Widget과 앱 조립
     demo/
       counter_page.dart             제품 화면 도입 전의 임시 화면
   core/
     design/
       nestory_colors.dart           승인 색 역할
+      nestory_fonts.dart            폰트 자산·family·라이선스 등록
       nestory_typography.dart       Noto Sans KR 텍스트 역할
-      nestory_spacing.dart          간격과 크기
+      nestory_spacing.dart          간격과 화면 여백
+      nestory_sizes.dart            최소 터치·컨트롤·아이콘·사진 크기
       nestory_radii.dart            모서리 반경
       nestory_theme.dart            선택한 UI 기반에 토큰을 연결하는 어댑터
     widgets/                        공통 표시와 입력 컴포넌트
@@ -119,7 +125,11 @@ flowchart TD
 
 ## 공통 디자인과 컴포넌트
 
-색은 승인된 25개 역할과 `accent`와 같은 값의 `tertiary` 별칭을 사용한다. Figma의 `Nestory / Semantic` 내 `role/` 이름과 코드 역할을 대응시킨다. 타이포그래피는 기존 `Nestory/` 텍스트 스타일 9개의 크기·줄 높이·굵기를 사용하며 폰트 번들·라이선스·기기 표시는 구현 단계에서 확인한다.
+색은 승인된 25개 역할과 `accent`와 같은 값의 `tertiary` 별칭을 사용한다. Figma의 `Nestory / Semantic` 내 `role/` 이름과 코드 역할을 대응시킨다. 타이포그래피는 기존 `Nestory/` 텍스트 스타일 9개의 크기·줄 높이·굵기를 사용하며, Flutter `TextStyle.height`는 `줄 높이 / 글자 크기`다. 폰트 원본·크기·해시·라이선스·가변 굵기 구성은 [폰트 자산](../assets/fonts/README.md)에 기록했다.
+
+`NestoryTheme.light`는 기존 Material 호스트에 토큰을 연결하는 어댑터다. seed 색으로 팔레트를 생성하지 않으며 표면은 흰색 또는 승인된 보조 회색, 주요 행동은 코랄로 연결한다. Material 슬롯은 승인된 텍스트 역할을 재사용한다. 상태별 색 역할은 공통 컴포넌트 구현에서 사용하며 이번 테마 연결만으로 모든 버튼 상태 구현을 완료했다고 보지 않는다.
+
+최소 터치 영역은 확정 문서의 48px을 따른다. Figma의 기존 `size/touch-target` 44px은 이번 코드에 반영하지 않는다. 버튼 52·입력 56px은 최소 높이 토큰이며 큰 글자에서 고정 높이로 사용하면 안 된다.
 
 `core/widgets`의 첫 범위는 주요·보조·위험 버튼, 레이블 입력, 상태 안내, 사진 없는 항목의 자리표시다. 값과 상태는 외부에서 전달하고 입력은 콜백으로 내보낸다. `50자 이름`, `사진 자동 재시도 3회`, `계정당 초안 하나` 같은 규칙은 기능의 domain·application에서 적용한다. 공통 Widget은 서버 저장과 기기 보존 상태를 자체적으로 판정하지 않는다.
 

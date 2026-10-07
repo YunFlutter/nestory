@@ -81,7 +81,7 @@
 
 ## 한글 타이포그래피
 
-서체는 **Noto Sans KR**이다. 사용자가 기존 Figma 화면의 서체·크기를 기준으로 선택했고, 아래 줄 높이는 Figma 스타일 패널에서도 확인했다. `Nestory Studio/` 전달용 스타일과 제품용 `Nestory/` 스타일을 구분한다. 앱 폰트 파일·라이선스 고지·번들 구성과 Android·iPhone의 실제 표시는 [구현 Issue 5](https://github.com/YunFlutter/nestory/issues/5)에서 검증한다.
+서체는 **Noto Sans KR**이다. 사용자가 기존 Figma 화면의 서체·크기를 기준으로 선택했고, 아래 줄 높이는 Figma 스타일 패널에서도 확인했다. `Nestory Studio/` 전달용 스타일과 제품용 `Nestory/` 스타일을 구분한다. [공통 기반 PR 7](https://github.com/YunFlutter/nestory/pull/7)에서 [폰트 원본·라이선스·번들](../assets/fonts/README.md)과 [Flutter 토큰](../lib/core/design/nestory_typography.dart)을 추가한다. Android·iPhone 실기기 표시는 [구현 Issue 5](https://github.com/YunFlutter/nestory/issues/5)에 남긴다.
 
 | 역할 | Figma 스타일 | 크기 / 줄 높이 | 굵기 | 용도 |
 | --- | --- | --- | --- | --- |
@@ -95,7 +95,7 @@
 | label | `Nestory/Label` | 14 / 21 | 700 | 짧은 레이블 |
 | micro | `Nestory/Micro` | 11 / 16 | 500 | 제한적인 보조 표기 |
 
-수치는 Flutter 논리 픽셀에 대응하는 디자인 기준이다. 글자 확대를 적용하며 필수 내용에 고정 높이·축소 글자를 적용하지 않는다. Caption·Micro는 보조 정보에 제한한다. 전체 경로는 접근 가능해야 하고 여러 줄을 허용한다. 큰 글자에서는 공간 카드를 1열로 바꾸고 행·버튼·필드의 높이를 늘린다. 자간은 기존 스타일의 실제 값을 추가 확인하며 임의 보정하지 않는다.
+수치는 Flutter 논리 픽셀에 대응하는 디자인 기준이다. 글자 확대를 적용하며 필수 내용에 고정 높이·축소 글자를 적용하지 않는다. Caption·Micro는 보조 정보에 제한한다. 전체 경로는 접근 가능해야 하고 여러 줄을 허용한다. 큰 글자에서는 공간 카드를 1열로 바꾸고 행·버튼·필드의 높이를 늘린다. 제품용 9개 스타일의 자간은 기존 Figma에서 모두 0px으로 확인했다.
 
 Figma 컬렉션·역할별 색·Variant·Property·Auto Layout 연결 계약은 [Figma 디자인 시스템](design/FIGMA_DESIGN_SYSTEM.md)을 따른다.
 
@@ -173,11 +173,11 @@ Figma 컬렉션·역할별 색·Variant·Property·Auto Layout 연결 계약은 
 
 ## 검증 결과와 후속 검증
 
-완료한 검증은 불투명 색쌍의 대비 계산, 문서·YAML·링크·변경 범위 점검과 기존 Figma의 색 변수·안내 프레임 확인이다. [Figma 반영 명세](design/FIGMA_DESIGN_SYSTEM.md)에 실제 변경과 확인 범위를 기록했다. 문서와 정적 디자인 자산만 변경하므로 TDD 제외이며 Flutter 분석·테스트·플랫폼 빌드는 실행 대상이 아니다.
+디자인 확정 단계에서 불투명 색쌍의 대비 계산, 문서·YAML·링크·변경 범위 점검과 기존 Figma의 색 변수·안내 프레임을 확인했다. [Figma 반영 명세](design/FIGMA_DESIGN_SYSTEM.md)에 확인 범위를 기록했다. 이 문서의 최초 디자인 확정 PR은 문서·정적 자산만 변경해 TDD를 제외했으며, 후속 공통 코드 PR 7은 TDD·분석·테스트·폰트 번들·플랫폼 빌드를 별도로 수행한다. 코드 구현과 제품 화면·실기기 검증을 구분한다.
 
 구현 후 작은/큰 iPhone과 Android 화면, 키보드·안전 영역·뒤로 가기·가장 큰 글자 크기·VoiceOver·TalkBack·키보드 포커스를 확인해야 한다. 보관함 최대 깊이와 50자 이름·1,000자 메모, 사진 없음과 동명 항목, 긴 전체 경로를 확인한다. 실패·충돌·기기 보존·수동 사진 재시도 상태는 재실행 이후에도 실제 데이터와 일치해야 한다. 성능은 profile 모드와 실기기에서 측정한다.
 
-시각 방향과 팔레트는 확정되었고 서체·크기·줄 높이는 기존 Figma 기준으로 정리했다. Material·Cupertino 기반, 다크 모드, 폰트/아이콘 의존성, 상세 작업 취소 정책은 관련 후속 Issue에서 정한다. 기존 제품 정책은 유지한다.
+시각 방향과 팔레트는 확정되었고 서체·크기·줄 높이·자간은 기존 Figma 기준으로 정리했다. 폰트는 원본 Noto Sans KR을 앱 자산으로 포함한다. 최종 Material·Cupertino 기반, 다크 모드, 새 아이콘 의존성, 상세 작업 취소 정책은 관련 후속 Issue에서 정한다. 기존 제품 정책은 유지한다.
 
 ## 이미지 보드
 

@@ -28,7 +28,7 @@
 | `Nestory/Label` | label | 14 / 21 | 700 · Bold | 짧은 레이블 |
 | `Nestory/Micro` | micro | 11 / 16 | 500 · Medium | 제한적인 보조 표기 |
 
-크기는 Flutter 논리 픽셀에 대응한다. Caption·Micro를 핵심 경로·오류·입력값·주요 행동에 사용하지 않는다. 긴 경로와 글자 확대에는 줄바꿈·필요한 높이를 제공한다. 자간은 추가 확인 항목이며 크기·줄 높이·굵기만으로 추정하지 않는다. 앱 번들에 넣을 폰트 파일·라이선스 고지와 실제 Android·iPhone 표시는 구현 Issue에서 검증한다.
+크기는 Flutter 논리 픽셀에 대응한다. Caption·Micro를 핵심 경로·오류·입력값·주요 행동에 사용하지 않는다. 긴 경로와 글자 확대에는 줄바꿈·필요한 높이를 제공한다. 2026년 10월 7일 구현 작업에서 제품용 9개 스타일의 자간도 모두 0px으로 확인했다. [Flutter 타이포그래피](../../lib/core/design/nestory_typography.dart)는 크기·줄 높이·굵기·자간을 그대로 연결한다. [폰트 원본·라이선스·번들](../../assets/fonts/README.md)을 추가했으며 실기기 검증은 Issue 5에 남긴다.
 
 ## 변수 컬렉션과 색 역할
 
@@ -66,7 +66,7 @@
 
 추가한 primitive 4개는 게시 숨김과 빈 scope를 적용했다. `role/`의 26개 alias에는 배경의 Frame·Shape, 본문의 Text·Shape, 경계의 Stroke 등 용도별 scope와 설명을 설정했다. 각 alias의 primitive 참조와 최종 hex를 브라우저에서 대조했다.
 
-26개 alias의 Web code syntax는 `var(--nestory-역할의-kebab-case)`, Android·iOS는 Flutter 대응 이름 `NestoryColors.역할명`이다. 예를 들어 `role/textPrimary`는 `var(--nestory-text-primary)`와 `NestoryColors.textPrimary`다. 새 primitive의 Web syntax는 `var(--nestory-primitive-이름)`, Android·iOS는 `const Color(0xFFHEX)`다. 세 플랫폼 필드의 저장을 확인했으며 이 이름은 구현 계약이다. Flutter 클래스와 Code Connect 연결을 구현했다는 뜻은 아니다.
+26개 alias의 Web code syntax는 `var(--nestory-역할의-kebab-case)`, Android·iOS는 Flutter 대응 이름 `NestoryColors.역할명`이다. 예를 들어 `role/textPrimary`는 `var(--nestory-text-primary)`와 `NestoryColors.textPrimary`다. 새 primitive의 Web syntax는 `var(--nestory-primitive-이름)`, Android·iOS는 `const Color(0xFFHEX)`다. 세 플랫폼 필드의 저장을 확인했고, 후속 구현에서 [NestoryColors](../../lib/core/design/nestory_colors.dart)에 같은 26개 역할을 추가했다. Code Connect 연결은 구현하지 않았다.
 
 ## 간격과 형태 기준
 
@@ -81,7 +81,9 @@
 | 공간 사진 | 4:3 |
 | 상세 사진 | 원본 비율 유지 |
 
-이 표는 확정 문서의 기준이다. Figma의 기존 모든 수치와 대조 완료를 의미하지 않는다. 공통 컴포넌트는 Auto Layout과 gap·padding·radius 변수로 구성한다. 텍스트는 Hug, 가용 폭을 채우는 컨트롤은 Fill을 사용하고 입력·긴 경로는 높이 확장을 허용한다.
+이 표는 확정 문서의 기준이다. 구현 작업에서 Semantic의 typography·space·radius·size·border/width 그룹을 대조했다. 기존 `size/button` 52와 `size/input` 56은 최소 높이, `size/icon` 24와 `border/width/default` 1은 크기 토큰에 반영했다. 기존 `size/touch-target` 44는 확정 기준 48과 달라 코드에서는 48을 사용한다. 기존 변수와 컴포넌트는 이번 읽기 작업에서 수정하지 않았다. 확인한 그룹이 모든 화면의 Auto Layout·고정 높이·터치 영역 검증 완료를 의미하지 않는다.
+
+공통 컴포넌트는 Auto Layout과 gap·padding·radius 변수로 구성한다. 텍스트는 Hug, 가용 폭을 채우는 컨트롤은 Fill을 사용하고 입력·긴 경로는 높이 확장을 허용한다.
 
 ## 공통 컴포넌트 계약
 
@@ -126,4 +128,4 @@
 - 안내 제목과 본문은 기존 `Nestory/Display`·`Nestory/Body` 스타일과 `role/textPrimary`, 바탕은 `role/surface`에 연결했다. 본문은 자동 높이이며 전체 안내가 잘림·겹침 없이 표시되는지 캡처로 확인했다.
 - 13종의 역할·상태·속성을 문서와 안내 프레임에 기록했다. 기존 모든 컴포넌트의 Variant·자간·바인딩 및 360·390·430 화면 적용 검증은 완료 범위에 포함하지 않는다.
 
-문서의 토큰·YAML·내부 링크·대비 계산·diff를 검증했다. Flutter 구현·실기기 접근성은 [Issue 5](https://github.com/YunFlutter/nestory/issues/5)의 후속 검증이다.
+문서의 토큰·YAML·내부 링크·대비 계산·diff를 검증했다. 후속 [공통 기반 PR 7](https://github.com/YunFlutter/nestory/pull/7)에서 Flutter 토큰·폰트·테마를 구현한다. 공통 Widget·제품 화면·실기기 접근성은 [Issue 5](https://github.com/YunFlutter/nestory/issues/5)의 후속 범위다.

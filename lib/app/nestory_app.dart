@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/design/nestory_theme.dart';
 import 'demo/counter_page.dart';
 
 class NestoryApp extends StatelessWidget {
@@ -9,7 +10,8 @@ class NestoryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Nestory',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: NestoryTheme.light,
+      themeMode: ThemeMode.light,
       home: const CounterPage(title: 'Nestory'),
     );
   }

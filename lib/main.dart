@@ -1,7 +1,5 @@
-import 'package:flutter/widgets.dart';
-
-import 'app/nestory_app.dart';
+import 'app/nestory_bootstrap.dart';
 
 void main() {
-  runApp(const NestoryApp());
+  NestoryBootstrap.run();
 }
