@@ -127,7 +127,7 @@ flowchart TD
 
 ## 브랜치와 PR 진행
 
-현재 작업은 최신 main의 `046b371`에서 만든 `feat/5-app-foundation` 브랜치에서 진행한다. 현재 저장소 규칙인 `<유형>/<Issue번호>-<설명>`을 사용하며 별도 develop 브랜치는 두지 않는다. 후속 기능도 최신 main과 해당 Issue를 기준으로 작업한다.
+앱 구조 기반의 첫 작업은 main의 `046b371`에서 만든 `feat/5-app-foundation` 브랜치와 [PR 6](https://github.com/YunFlutter/nestory/pull/6)으로 진행했다. 후속 작업은 최신 main과 해당 Issue를 기준으로 새 작업 브랜치를 만든다. 저장소 규칙인 `<유형>/<Issue번호>-<설명>`을 사용하며 별도 develop 브랜치는 두지 않는다.
 
 1. 의미 있는 첫 커밋으로 Draft PR을 만들고 `Refs #5`로 연결한다.
 2. 구조 정의와 이번 변경의 범위를 PR에 기록한다. Issue 5 전체의 디자인·기기 검증이 끝나기 전에는 `Closes #5`를 사용하지 않는다.
