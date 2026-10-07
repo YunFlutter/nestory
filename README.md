@@ -25,7 +25,7 @@ flutter analyze
 flutter test
 ```
 
-앱 시작점은 `lib/main.dart`입니다.
+앱 시작점은 [lib/main.dart](lib/main.dart)입니다. 루트 [NestoryApp](lib/app/nestory_app.dart)이 앱을 조립하고 임시 [CounterPage](lib/app/demo/counter_page.dart)를 표시합니다. 기존 카운터 동작과 템플릿 테마를 유지합니다.
 
 ## 앱 구조
 
