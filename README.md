@@ -26,3 +26,7 @@ flutter test
 ```
 
 앱 시작점은 `lib/main.dart`입니다.
+
+## 앱 구조
+
+앱 조립·공통 디자인·기능별 계층의 책임과 구현 순서는 [앱 구조](docs/APP_ARCHITECTURE.md)를 따릅니다. [구현 Issue 5](https://github.com/YunFlutter/nestory/issues/5)에서 단계별로 진행하며 현재 제품 기능과 공통 디자인 위젯은 구현 전입니다.
