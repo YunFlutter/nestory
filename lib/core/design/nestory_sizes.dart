@@ -6,5 +6,6 @@ abstract final class NestorySizes {
   static const icon = 24.0;
   static const iconSmall = 20.0;
   static const thumbnail = 56.0;
+  static const borderWidth = 1.0;
   static const spacePhotoAspectRatio = 4 / 3;
 }

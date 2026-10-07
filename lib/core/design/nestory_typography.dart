@@ -74,6 +74,7 @@ abstract final class NestoryTypography {
     fontSize: 11,
     height: 16 / 11,
     fontWeight: FontWeight.w500,
+    letterSpacing: 0,
     color: NestoryColors.textPrimary,
   );
 

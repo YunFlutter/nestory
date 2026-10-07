@@ -32,4 +32,12 @@ void main() {
     expect(theme.appBarTheme.titleTextStyle!.fontSize, 22);
     expect(theme.appBarTheme.titleTextStyle!.height, 32 / 22);
   });
+
+  testWidgets('demo includes Korean text to check the app font', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const NestoryApp());
+    expect(find.text('버튼을 누른 횟수입니다'), findsOneWidget);
+    expect(find.byTooltip('횟수 추가'), findsOneWidget);
+  });
 }
